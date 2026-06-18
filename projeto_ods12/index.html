@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODS 12 - Calculadora de Consumo de Energia</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <main class="container">
+        <header>
+            <div class="logo-ods">12</div>
+            <h1>Calculadora de Energia Consciente</h1>
+            <p>Descubra o seu impacto e ajude a alcançar o ODS 12 da ONU (Consumo e Produção Responsáveis).</p>
+        </header>
+
+        <section id="calculator-section" class="card glass">
+            <form id="energy-form">
+                <div class="form-group">
+                    <label for="shower">Tempo de banho quente por dia (minutos):</label>
+                    <input type="number" id="shower" min="0" value="15" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ac">Ar condicionado (horas por dia):</label>
+                    <input type="number" id="ac" min="0" value="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="electronics">TV / Computador (horas por dia):</label>
+                    <input type="number" id="electronics" min="0" value="4" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lights">Lâmpadas acesas na casa (horas/dia estimadas por lâmpada):</label>
+                    <input type="number" id="lights" min="0" value="5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="light-type">Qual tipo de lâmpada você mais usa?</label>
+                    <select id="light-type">
+                        <option value="led">LED (Econômica)</option>
+                        <option value="fluorescent">Fluorescente</option>
+                        <option value="incandescent">Incandescente (Antiga)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">Calcular Meu Impacto</button>
+            </form>
+        </section>
+
+        <section id="result-section" class="card glass hidden">
+            <h2>Seu Resultado Mensal</h2>
+            <div class="score-display">
+                <span id="kwh-result">0</span> <small>kWh/mês</small>
+            </div>
+            
+            <div class="status-box" id="status-box">
+                <h3 id="status-title">Status: ...</h3>
+                <p id="status-message">Mensagem...</p>
+            </div>
+
+            <div class="tips">
+                <h3>💡 Dicas ODS 12 para você:</h3>
+                <ul id="tips-list">
+                    <!-- Tips will be injected via JS -->
+                </ul>
+            </div>
+
+            <button type="button" id="recalculate-btn" class="btn-secondary">Recalcular</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Projeto focado no ODS 12: Consumo e Produção Responsáveis.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
