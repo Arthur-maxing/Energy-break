@@ -10,6 +10,9 @@ document.getElementById('energy-form').addEventListener('submit', function(e) {
     const washingMachinePerWeek = parseFloat(document.getElementById('washing-machine').value);
     const ironHoursPerWeek = parseFloat(document.getElementById('iron').value);
     const microwaveMinPerDay = parseFloat(document.getElementById('microwave').value);
+    const videogameHours = parseFloat(document.getElementById('videogame').value);
+    const fanHours = parseFloat(document.getElementById('fan').value);
+    const hairdryerMin = parseFloat(document.getElementById('hairdryer').value);
 
     // Power approximations in Watts
     const powerShower = 4500; // Eletric shower average
@@ -18,6 +21,9 @@ document.getElementById('energy-form').addEventListener('submit', function(e) {
     const powerWashingMachine = 500; // Average
     const powerIron = 1000; // Average
     const powerMicrowave = 1200; // Average
+    const powerVideogame = 200; // Console average
+    const powerFan = 70; // Fan average
+    const powerHairdryer = 1500; // Hairdryer average
     
     let powerLight = 9; // LED default
     if (lightType === 'fluorescent') powerLight = 20;
@@ -32,12 +38,15 @@ document.getElementById('energy-form').addEventListener('submit', function(e) {
     const dailyWashingMachineKWh = ((powerWashingMachine * 1.5) / 1000) * (washingMachinePerWeek / 7); // Assuming 1.5h per wash
     const dailyIronKWh = (powerIron * (ironHoursPerWeek / 7)) / 1000;
     const dailyMicrowaveKWh = (powerMicrowave * (microwaveMinPerDay / 60)) / 1000;
+    const dailyVideogameKWh = (powerVideogame * videogameHours) / 1000;
+    const dailyFanKWh = (powerFan * fanHours) / 1000;
+    const dailyHairdryerKWh = (powerHairdryer * (hairdryerMin / 60)) / 1000;
 
     // Refrigerator average daily consumption (constant approx)
     const dailyFridgeKWh = 1.5; 
 
     // Total monthly consumption (30 days)
-    const totalDaily = dailyShowerKWh + dailyACKWh + dailyElectronicsKWh + dailyLightsKWh + dailyWashingMachineKWh + dailyIronKWh + dailyMicrowaveKWh + dailyFridgeKWh;
+    const totalDaily = dailyShowerKWh + dailyACKWh + dailyElectronicsKWh + dailyLightsKWh + dailyWashingMachineKWh + dailyIronKWh + dailyMicrowaveKWh + dailyVideogameKWh + dailyFanKWh + dailyHairdryerKWh + dailyFridgeKWh;
     const totalMonthly = Math.round(totalDaily * 30);
 
     displayResult(totalMonthly, showerMin, acHours, lightType);
